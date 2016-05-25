@@ -178,7 +178,30 @@
     return name;
 }
 
+// GMT 格林威治标准时间；(据时区转换对应时间，例如：CCD +8.00 中国标准时间)
+- (NSDate*)systemUptime
+{
+    NSTimeInterval time2 = [self upTimeSystem];
+    return [NSDate dateWithTimeIntervalSinceNow:(0 - time2)];
+}
+
 #pragma mark - Private method
+
+- (time_t)upTimeSystem
+{
+    struct timeval boottime;
+    int mib[2] = {CTL_KERN, KERN_BOOTTIME};
+    size_t size = sizeof(boottime);
+    time_t now;
+    time_t uptime = -1;
+    (void)time(&now);
+    if (sysctl(mib, 2, &boottime, &size, NULL, 0) != -1
+        && boottime.tv_sec != 0) {
+        uptime = now - boottime.tv_sec;
+    }
+    return uptime;
+}
+
 /**
  *  获取CTL_HW 信息 (1G = 1048576000 B)
  *
@@ -189,10 +212,10 @@
 - (int)getSystemInfo:(int)typeSpecifier
 {
     size_t size = sizeof(int);
-    int results ;
+    size_t results ;
     int mib[2] = {CTL_HW,typeSpecifier};
     sysctl(mib, 2, &results, &size, NULL, 0);
-    return results;
+    return (int)results;
 }
 
 @end

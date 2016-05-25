@@ -34,4 +34,7 @@
 /*! Device's machine model name. e.g. "iPhone5s","iPad mini 2" */
 @property (nonatomic, readonly) NSString * machineModelName;
 
+/*! The system' startup time */
+@property (nonatomic, readonly) NSDate * systemUptime;
+
 @end
