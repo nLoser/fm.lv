@@ -17,12 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    MPBottomToolItem * item = [MPBottomToolItem new];
-    item.imgName = @"dsadsa";
-    item.tag = 1;
-    item.up_frame = CGRectZero;
-    item.dn_frame = CGRectZero;
 }
 
 - (void)didReceiveMemoryWarning {

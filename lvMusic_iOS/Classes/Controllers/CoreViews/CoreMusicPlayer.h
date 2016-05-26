@@ -14,6 +14,15 @@ typedef NS_ENUM(NSUInteger, CoreMusicPlayerStatus)
     CoreMusicPlayerStatusDown  // 播放器缩小
 };
 
+@interface MPBottomToolItem : NSObject
+
+@property (nonatomic, strong) NSString * imgName;
+@property (nonatomic, assign) NSUInteger tag;
+@property (nonatomic, assign) CGRect   up_frame;
+@property (nonatomic, assign) CGRect   dn_frame;
+
+@end
+
 @protocol CoreMusicPlayerDelegate <NSObject>
 
 @end
@@ -21,14 +30,5 @@ typedef NS_ENUM(NSUInteger, CoreMusicPlayerStatus)
 @interface CoreMusicPlayer : UIView
 
 - (instancetype)initWithSth;
-
-@end
-
-@interface MPBottomToolItem : NSObject
-
-@property (nonatomic, strong) NSString * imgName;
-@property (nonatomic, assign) NSUInteger tag;
-@property (nonatomic, assign) CGRect   up_frame;
-@property (nonatomic, assign) CGRect   dn_frame;
 
 @end
