@@ -9,10 +9,14 @@
 #import <TargetConditionals.h>
 #import <sys/sysctl.h>
 #import <sys/utsname.h>
+#import <ifaddrs.h>
+#import <arpa/inet.h>
 #import "UIDevice+LVAdd.h"
 #import "NSString+LVAdd.h"
 
 @implementation UIDevice (LVAdd)
+
+#pragma mark - Device Infomation
 
 + (double)systemVersion
 {
@@ -183,6 +187,42 @@
 {
     NSTimeInterval time2 = [self upTimeSystem];
     return [NSDate dateWithTimeIntervalSinceNow:(0 - time2)];
+}
+
+#pragma mark - Newwork Infomation
+
+- (NSString *)ipAddressCell
+{
+    NSString * address = nil;
+    NSLocale * local = [NSLocale currentLocale];
+    NSLog(@"%@",[local objectForKey:NSLocaleCountryCode]);
+    NSLog(@"%@",[[NSLocale preferredLanguages] objectAtIndex:0]);
+    NSLog(@"%@",[UIDevice currentDevice].systemVersion);
+    NSLog(@"%@",[[UIDevice currentDevice] name]);
+    NSLog(@"%@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]);
+    NSLog(@"%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]);
+    return address;
+}
+
+- (NSString *)ipAddressWIFI
+{
+    NSString *address = nil;
+    struct ifaddrs *addrs = NULL;
+    if (getifaddrs(&addrs) == 0) {
+        struct ifaddrs *addr = addrs;
+        while (addr != NULL) {
+            if (addr->ifa_addr->sa_family == AF_INET) {
+                if ([[NSString stringWithUTF8String:addr->ifa_name] isEqualToString:@"en0"]) {
+                    address = [NSString stringWithUTF8String:
+                               inet_ntoa(((struct sockaddr_in *)addr->ifa_addr)->sin_addr)];
+                    break;
+                }
+            }
+            addr = addr->ifa_next;
+        }
+    }
+    freeifaddrs(addrs);
+    return address;
 }
 
 #pragma mark - Private method

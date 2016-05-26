@@ -14,16 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Masonry (1.0.0)
   - pop (1.0.9)
   - Reachability (3.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Masonry
   - pop (~> 1.0.9)
   - Reachability (~> 3.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 

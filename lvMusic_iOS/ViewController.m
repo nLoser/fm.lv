@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-
-#import "UIDevice+LVAdd.h"
+#import "CoreMusicPlayer.h"
 
 @interface ViewController ()
 
@@ -18,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
-    NSLog(@"%@",[UIDevice currentDevice].systemUptime);
+    MPBottomToolItem * item = [MPBottomToolItem new];
+    item.imgName = @"dsadsa";
+    item.tag = 1;
+    item.up_frame = CGRectZero;
+    item.dn_frame = CGRectZero;
 }
 
 - (void)didReceiveMemoryWarning {
