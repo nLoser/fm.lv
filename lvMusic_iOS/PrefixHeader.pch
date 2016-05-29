@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  lvMusic_iOS
+//
+//  Created by LV on 16/5/27.
+//  Copyright © 2016年 lvhongyang. All rights reserved.
+//
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
+#if 1 // Masonry feature
+//define this constant if you want to use Masonry without the 'mas_' prefix
+#define MAS_SHORTHAND
+//define this constant if you want to enable auto-boxing for default syntax
+#define MAS_SHORTHAND_GLOBALS // shorthand_globals
+#import "Masonry.h"
+#endif
+
+#endif

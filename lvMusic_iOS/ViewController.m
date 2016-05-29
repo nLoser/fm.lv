@@ -17,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CoreMusicPlayer * player = [[CoreMusicPlayer alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:player];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -29,6 +29,6 @@ typedef NS_ENUM(NSUInteger, CoreMusicPlayerStatus)
 
 @interface CoreMusicPlayer : UIView
 
-- (instancetype)initWithSth;
+
 
 @end
