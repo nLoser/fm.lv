@@ -19,6 +19,10 @@
 		A9F78C361CF6E0B60010FF17 /* CoreMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78C351CF6E0B60010FF17 /* CoreMusicPlayer.m */; };
 		A9F78C391CF6F17E0010FF17 /* CMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78C381CF6F17E0010FF17 /* CMPlayer.m */; };
 		A9F78C3C1CF6F1A90010FF17 /* CMToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78C3B1CF6F1A90010FF17 /* CMToolView.m */; };
+		A9F856F81CFD95A6000B290A /* CMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F856F71CFD95A6000B290A /* CMPlayerManager.m */; };
+		A9F856FC1CFD9678000B290A /* CMSongInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F856FB1CFD9678000B290A /* CMSongInfo.m */; };
+		A9F856FE1CFD9870000B290A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F856FD1CFD9870000B290A /* MediaPlayer.framework */; };
+		A9F857001CFD98A0000B290A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F856FF1CFD98A0000B290A /* AVFoundation.framework */; };
 		A9FA8A2A1CDB91C6007B6E78 /* UINavigationController+FullScreenBackGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FA8A291CDB91C6007B6E78 /* UINavigationController+FullScreenBackGesture.m */; };
 		A9FA8A2E1CDB9755007B6E78 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FA8A2D1CDB9755007B6E78 /* BaseNavigationController.m */; };
 		A9FA8A311CDB9824007B6E78 /* AbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FA8A301CDB9824007B6E78 /* AbstractViewController.m */; };
@@ -55,6 +59,12 @@
 		A9F78C381CF6F17E0010FF17 /* CMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPlayer.m; sourceTree = "<group>"; };
 		A9F78C3A1CF6F1A90010FF17 /* CMToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMToolView.h; sourceTree = "<group>"; };
 		A9F78C3B1CF6F1A90010FF17 /* CMToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMToolView.m; sourceTree = "<group>"; };
+		A9F856F61CFD95A6000B290A /* CMPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPlayerManager.h; sourceTree = "<group>"; };
+		A9F856F71CFD95A6000B290A /* CMPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPlayerManager.m; sourceTree = "<group>"; };
+		A9F856FA1CFD9678000B290A /* CMSongInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSongInfo.h; sourceTree = "<group>"; };
+		A9F856FB1CFD9678000B290A /* CMSongInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSongInfo.m; sourceTree = "<group>"; };
+		A9F856FD1CFD9870000B290A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A9F856FF1CFD98A0000B290A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A9FA8A281CDB91C6007B6E78 /* UINavigationController+FullScreenBackGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FullScreenBackGesture.h"; sourceTree = "<group>"; };
 		A9FA8A291CDB91C6007B6E78 /* UINavigationController+FullScreenBackGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FullScreenBackGesture.m"; sourceTree = "<group>"; };
 		A9FA8A2C1CDB9755007B6E78 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -77,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F857001CFD98A0000B290A /* AVFoundation.framework in Frameworks */,
+				A9F856FE1CFD9870000B290A /* MediaPlayer.framework in Frameworks */,
 				CA53C59B832A3AA23ED40CA3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +108,8 @@
 		8D12C4D164935C10BE4BD2B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9F856FF1CFD98A0000B290A /* AVFoundation.framework */,
+				A9F856FD1CFD9870000B290A /* MediaPlayer.framework */,
 				E6681F967558A9F5E342AD81 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -165,6 +179,8 @@
 		A9F78C331CF6E06B0010FF17 /* CoreViews */ = {
 			isa = PBXGroup;
 			children = (
+				A9F856F91CFD95E4000B290A /* Model */,
+				A9F856F51CFD9588000B290A /* CMPlayerManager */,
 				A9F78C341CF6E0B60010FF17 /* CoreMusicPlayer.h */,
 				A9F78C351CF6E0B60010FF17 /* CoreMusicPlayer.m */,
 				A9F78C371CF6F17E0010FF17 /* CMPlayer.h */,
@@ -174,6 +190,24 @@
 				A9FECBF01CFC3C64008B8354 /* CoreMusicState.h */,
 			);
 			path = CoreViews;
+			sourceTree = "<group>";
+		};
+		A9F856F51CFD9588000B290A /* CMPlayerManager */ = {
+			isa = PBXGroup;
+			children = (
+				A9F856F61CFD95A6000B290A /* CMPlayerManager.h */,
+				A9F856F71CFD95A6000B290A /* CMPlayerManager.m */,
+			);
+			path = CMPlayerManager;
+			sourceTree = "<group>";
+		};
+		A9F856F91CFD95E4000B290A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9F856FA1CFD9678000B290A /* CMSongInfo.h */,
+				A9F856FB1CFD9678000B290A /* CMSongInfo.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A9FA8A251CDB90A1007B6E78 /* Classes */ = {
@@ -365,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F856F81CFD95A6000B290A /* CMPlayerManager.m in Sources */,
 				A9FA8A401CDBAA42007B6E78 /* BaseNormalViewController.m in Sources */,
 				A9B10BC71CF30BA1004FB652 /* NSString+LVAdd.m in Sources */,
 				A9705B671CDB46200018814E /* ViewController.m in Sources */,
@@ -374,6 +409,7 @@
 				A9705B641CDB46200018814E /* AppDelegate.m in Sources */,
 				A9F78C391CF6F17E0010FF17 /* CMPlayer.m in Sources */,
 				A9F78C361CF6E0B60010FF17 /* CoreMusicPlayer.m in Sources */,
+				A9F856FC1CFD9678000B290A /* CMSongInfo.m in Sources */,
 				A9705B611CDB46200018814E /* main.m in Sources */,
 				A9F78C3C1CF6F1A90010FF17 /* CMToolView.m in Sources */,
 				A9FA8A311CDB9824007B6E78 /* AbstractViewController.m in Sources */,

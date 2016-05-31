@@ -12,6 +12,16 @@ typedef NS_ENUM(NSUInteger, CoreMusicPlayerBoundStatus)
     CoreMusicPlayerBoundStatusShrinking   // The interface state is shrinking
 };
 
+typedef NS_ENUM(NSUInteger, CoreMusicPlayerPlayStatus)
+{
+    CoreMusicPlayerPlayStatusNULL,
+    CoreMusicPlayerPlayStatusLoadData,
+    CoreMusicPlayerPlayStatusReady,
+    CoreMusicPlayerPlayStatusPlay,
+    CoreMusicPlayerPlayStatusPause,
+    CoreMusicPlayerPlayStatusStop
+};
+
 #define kBottomMin_H 51.f  // The minimum height of 'bottomToolView'
 #define kBottomMax_H 110.f // The maximum height of 'bottomToolView'
 
