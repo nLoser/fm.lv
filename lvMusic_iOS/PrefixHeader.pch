@@ -14,6 +14,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "UIView+GetRect.h"
+#import "UIFont+GetFont.h"
 
 #if 1 // Masonry feature
 //define this constant if you want to use Masonry without the 'mas_' prefix

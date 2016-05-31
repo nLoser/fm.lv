@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreMusicState.h"
+
 #define kITEM_WH  49.0
 #define kITEM_GAP 7.0
 
 @interface CMToolView : UIView
+
+- (void)compress:(CGFloat)value;
 
 @end

@@ -7,14 +7,13 @@
 //
 
 #import "CMToolView.h"
+#import "UIView+GetRect.h"
 
 #define kCM_PLAYBTN_SIZE        CGSizeMake(66, 66)
 #define kCM_NORMALBTN_SIZE      CGSizeMake(49, 49)
 #define kCM_PLAYDEFAULT_CENTER  CGPointZero
 
 #define kCM_BTNS_GAPPING 12.f
-#define kCM_SELF_HEIGHT 110.f
-
 
 @interface CMToolView ()
 @property (nonatomic, strong) UIButton * cmt_playBtn;
@@ -26,34 +25,40 @@
 @property (nonatomic, assign) CGSize  otherBtnSize;
 @property (nonatomic, assign) CGFloat gapping;
 @property (nonatomic, assign) CGFloat selfHeight;
+
 @end
 
 @implementation CMToolView
 @synthesize cmt_playBtn,cmt_prevBtn,cmt_nextBtn;
 @synthesize playBtnSize,playCenter,otherBtnSize,gapping,selfHeight;
 
+
+#pragma mark - UIView Life Cycle
+
 - (instancetype)init
 {
     self = [super init];
     if (!self) return nil;
+    
     [self makeDefaultUserInterface];
-    [self makeToolBtnAction];
+    [self bindToolAction];
+    
     return self;
 }
-
+#if 1
 - (void)makeDefaultUserInterface
 {
     playBtnSize  = kCM_PLAYBTN_SIZE;
     otherBtnSize = kCM_NORMALBTN_SIZE;
     playCenter   = kCM_PLAYDEFAULT_CENTER;
     gapping      = kCM_BTNS_GAPPING;
-    selfHeight   = kCM_SELF_HEIGHT;
+    selfHeight   = kBottomMax_H;
     
     cmt_playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [cmt_playBtn setImage:[UIImage imageNamed:@"ic_action_play"] forState:UIControlStateNormal];
     cmt_playBtn.layer.borderColor = [UIColor blueColor].CGColor;
     cmt_playBtn.layer.borderWidth = 1.f;
-    cmt_playBtn.layer.cornerRadius   = playBtnSize.width/2.f;
+    cmt_playBtn.layer.cornerRadius = playBtnSize.width/2.f;
     cmt_playBtn.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cmt_playBtn.layer.shouldRasterize = YES;
     cmt_playBtn.layer.masksToBounds = YES;
@@ -71,20 +76,33 @@
     [self addSubview:cmt_nextBtn];
 }
 
-- (void)makeToolBtnAction
+
+
+- (void)compress:(CGFloat)value
 {
-    [cmt_playBtn addTarget:self action:@selector(playBtnAction1:) forControlEvents:UIControlEventTouchUpInside];
-    [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapUpView)]];
+    CGFloat compressRate = 1 - (value - kBottomMin_H)/(kBottomMax_H - kBottomMin_H);
+    CGFloat sizeRate = kCM_PLAYBTN_SIZE.width-(kCM_PLAYBTN_SIZE.width-kCM_NORMALBTN_SIZE.width)*compressRate;
+    
+    selfHeight = value;
+    gapping = kCM_BTNS_GAPPING * (1-compressRate);
+    
+    playCenter = CGPointMake(80*compressRate, 0);
+    playBtnSize = CGSizeMake(sizeRate, sizeRate);
+    cmt_playBtn.layer.cornerRadius = sizeRate/2.f;
+    cmt_playBtn.layer.borderWidth = 1-compressRate;
+    
+    cmt_prevBtn.alpha = 1-compressRate;
+    
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
 }
 
-+ (BOOL)requiresConstraintBasedLayout
-{
-    return YES;
-}
-
-// this is Apple's recommended place for adding/updating constraints.
 - (void)updateConstraints
 {
+    [self updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(selfHeight);
+    }];
+    
     [cmt_playBtn updateConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(playBtnSize);
         make.center.equalTo(playCenter);
@@ -105,44 +123,13 @@
         make.height.equalTo(selfHeight);
     }];
     
-    // according to apple super should be called at end of method.
     [super updateConstraints];
 }
 
-#pragma mark - Target Action
 
-- (void)playBtnAction1:(UIButton *)button
+- (void)bindToolAction
 {
-    playCenter  = CGPointMake(70, 0);
-    playBtnSize = kCM_NORMALBTN_SIZE;
-    selfHeight  = (kCM_SELF_HEIGHT - 51);
-    gapping     = kCM_BTNS_GAPPING/2.f;
-    
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        cmt_playBtn.layer.borderWidth  = 0.f;
-        cmt_prevBtn.alpha = 0;
-        [self layoutIfNeeded];
-    }];
+    [cmt_playBtn addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
 }
-
-- (void)tapUpView
-{
-    playCenter  = kCM_PLAYDEFAULT_CENTER;
-    playBtnSize = kCM_PLAYBTN_SIZE;
-    selfHeight  = kCM_SELF_HEIGHT;
-    gapping     = kCM_BTNS_GAPPING;
-    
-    [self setNeedsUpdateConstraints];
-    [self updateConstraintsIfNeeded];
-    
-    [UIView animateWithDuration:0.4 animations:^{
-        cmt_playBtn.layer.borderWidth  = 1.f;
-        cmt_prevBtn.alpha = 1;
-        [self layoutIfNeeded];
-    }];
-}
-
+#endif
 @end

@@ -68,6 +68,7 @@
 		A9FA8A3C1CDBA39F007B6E78 /* UIView+GetRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GetRect.m"; sourceTree = "<group>"; };
 		A9FA8A3E1CDBAA42007B6E78 /* BaseNormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNormalViewController.h; sourceTree = "<group>"; };
 		A9FA8A3F1CDBAA42007B6E78 /* BaseNormalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNormalViewController.m; sourceTree = "<group>"; };
+		A9FECBF01CFC3C64008B8354 /* CoreMusicState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreMusicState.h; sourceTree = "<group>"; };
 		E6681F967558A9F5E342AD81 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +171,7 @@
 				A9F78C381CF6F17E0010FF17 /* CMPlayer.m */,
 				A9F78C3A1CF6F1A90010FF17 /* CMToolView.h */,
 				A9F78C3B1CF6F1A90010FF17 /* CMToolView.m */,
+				A9FECBF01CFC3C64008B8354 /* CoreMusicState.h */,
 			);
 			path = CoreViews;
 			sourceTree = "<group>";

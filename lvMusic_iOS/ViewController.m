@@ -18,9 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CoreMusicPlayer * player = [[CoreMusicPlayer alloc] initWithFrame:self.view.bounds];
+    CoreMusicPlayer * player = [CoreMusicPlayer new];
     [self.view addSubview:player];
+
+    [player makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
