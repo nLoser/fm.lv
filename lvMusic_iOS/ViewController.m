@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "CoreMusicPlayer.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController ()
 
@@ -24,6 +26,14 @@
     [player makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+}
+
+- (void)test
+{
+    AVAudioSession * session = [AVAudioSession sharedInstance];
+    
+    //route change
+    
 }
 
 
